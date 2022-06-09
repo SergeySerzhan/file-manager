@@ -1,18 +1,11 @@
-import { join } from 'path';
-
 import { checkIsDir } from '../checkIsDir.js';
-import { getCurrentDirectory, setCurrentDirectory, changeRlPrompt } from '../index.js';
+import { setCurrentDirectory, changeRlPrompt } from '../index.js';
+import { createAbsolutePath } from '../createPath.js';
 
 export async function cd(...args) {
-    if (args.length !== 1) throw new Error('Invalid input');
+    let newPath = createAbsolutePath(args.join(' '));
 
-    try {
-        let newPath = args[0].startsWith('.') ? join(getCurrentDirectory(), args[0]) : join(...args[0].split('/'));
-
-        if (!(await checkIsDir(newPath))) throw new Error('It is file');
-        setCurrentDirectory(newPath);
-        changeRlPrompt();
-    } catch(_) {
-        throw new Error('Operation failed');
-    }
+    if (!(await checkIsDir(newPath))) throw new Error('It is file');
+    setCurrentDirectory(newPath);
+    changeRlPrompt();
 }

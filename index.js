@@ -60,10 +60,13 @@ rl.on('line', async (line) => {
         rl.prompt()
     } catch(e) {
         if (e.message === 'Invalid input') printInputError();
-        else if (e.message === 'Operation failed') printOperationError();
-        else process.stdout.write('Unknown error\n');
+        else printOperationError();
         rl.prompt();
     }
 })
 
 rl.on('close', exit);
+
+process.on('uncaughtException', (err) => {
+    printOperationError();
+})
