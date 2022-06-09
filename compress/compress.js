@@ -19,6 +19,6 @@ export async function compress(pathToFile, pathToDir, ...args) {
     const dest = await createWriteStream(join(absolutePathToDir, `${basename(absolutePathToFile)}.gz`));
 
     pipeline(src, zip, dest, (err) => {
-        if (err) console.log(err);
+        if (err) throw new Error('Operation failed');
     });
 }

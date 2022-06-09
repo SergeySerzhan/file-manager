@@ -18,6 +18,6 @@ export async function decompress(pathToFile, pathToDir, ...args) {
     const dest = await createWriteStream(join(absolutePathToDir, `${basename(absolutePathToFile, '.gz')}`));
 
     pipeline(src, unzip, dest, (err) => {
-        if (err) console.log(err);
+        if (err) throw new Error('Operation failed');
     });
 }
