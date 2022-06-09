@@ -11,6 +11,8 @@ import { mv } from './file_operations/mv.js';
 
 import { os } from './os/os.js';
 
+import { hash } from './hash/hash.js';
+
 export const cmds = {
     'up': up,
     'cd': cd,
@@ -22,4 +24,5 @@ export const cmds = {
     'rm': rm,
     'mv': mv,
     'os': os,
+    'hash': hash,
 };
