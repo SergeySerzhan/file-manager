@@ -9,6 +9,8 @@ import { cp } from './file_operations/cp.js';
 import { rm } from './file_operations/rm.js';
 import { mv } from './file_operations/mv.js';
 
+import { os } from './os/os.js';
+
 export const cmds = {
     'up': up,
     'cd': cd,
@@ -19,4 +21,5 @@ export const cmds = {
     'cp': cp,
     'rm': rm,
     'mv': mv,
+    'os': os,
 };
