@@ -13,6 +13,9 @@ import { os } from './os/os.js';
 
 import { hash } from './hash/hash.js';
 
+import { compress } from './compress/compress.js';
+import { decompress } from './compress/decompress.js';
+
 export const cmds = {
     'up': up,
     'cd': cd,
@@ -25,4 +28,6 @@ export const cmds = {
     'mv': mv,
     'os': os,
     'hash': hash,
+    'compress': compress,
+    'decompress': decompress,
 };
