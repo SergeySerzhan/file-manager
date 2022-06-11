@@ -6,12 +6,12 @@ import {basename, join} from 'path';
 import {pipeline} from 'stream';
 
 export async function decompress(pathToFile, pathToDir, ...args) {
-    if (args.length) throw new Error('Invalid input');
+    if (args.length) throw new Error('Operation failed');
 
     const absolutePathToFile = createAbsolutePath(pathToFile);
     const absolutePathToDir = createAbsolutePath(pathToDir);
 
-    if (await checkIsDir(absolutePathToFile) && !(await checkIsDir(absolutePathToDir))) throw new Error('Invalid input');
+    if (await checkIsDir(absolutePathToFile) && !(await checkIsDir(absolutePathToDir))) throw new Error('Operation failed');
 
     const src = await createReadStream(absolutePathToFile);
     const unzip = createBrotliDecompress();

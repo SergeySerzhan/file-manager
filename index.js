@@ -1,5 +1,6 @@
 import { createInterface } from 'readline';
 import { homedir } from 'os';
+import { normalize, join } from 'path';
 
 import { cmds } from './cmds.js';
 
@@ -26,15 +27,17 @@ export function changeRlPrompt() {
 }
 
 export function getCurrentDirectory() {
+  console.log(currentDir);
     return currentDir;
 }
 
 export function setCurrentDirectory(dir) {
     if (process.platform === 'win32') dir = dir[0].toUpperCase() + dir.slice(1);
+    if (dir.endsWith('.')) dir = dir.slice(0, dir.length - 1) + '\\';
     currentDir = dir;
 }
 
-const username = process.argv[2].startsWith('--username') ? process.argv[2].split('=')[1].trim() : 'Anonymous';
+const username = process.argv[2] && process.argv[2].startsWith('--username') ? process.argv[2].split('=')[1].trim() : 'Anonymous';
 
 let currentDir = homedir();
 

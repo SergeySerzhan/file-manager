@@ -4,11 +4,11 @@ import { createAbsolutePath } from '../createPath.js';
 import { checkIsDir } from '../checkIsDir.js';
 
 export async function rm(...args) {
-    if (args.length === 0) throw new Error('Invalid input');
+    if (args.length === 0) throw new Error('Operation failed');
 
     let path = createAbsolutePath(args.join(' '));
 
-    if (await checkIsDir(path)) throw new Error('Invalid input');
+    if (await checkIsDir(path)) throw new Error('Operation failed');
 
     await remove(path);
 }

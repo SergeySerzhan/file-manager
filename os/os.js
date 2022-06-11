@@ -1,7 +1,7 @@
 import { EOL, cpus, homedir, userInfo } from 'os';
 
 export function os(...args) {
-    if (args.length !== 1) throw new Error('Invalid input');
+    if (args.length !== 1) throw new Error('Operation failed');
 
     switch (args[0]) {
         case '--EOL':
@@ -26,6 +26,6 @@ export function os(...args) {
             console.log(process.arch);
             break;
         default:
-            throw new Error('Invalid input');
+            throw new Error('Operation failed');
     }
 }
